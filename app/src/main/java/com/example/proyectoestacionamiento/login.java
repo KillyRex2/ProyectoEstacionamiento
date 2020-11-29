@@ -24,7 +24,7 @@ import java.util.Map;
 
 public class login extends AppCompatActivity {
 
-    private Button sesion,registro;
+    private Button sesion,registro, prueba;
     private EditText email,pass;
     String correo,contraseña;
     @Override
