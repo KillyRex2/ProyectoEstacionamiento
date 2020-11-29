@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">ProyectoEstacionamiento</string>
+    <string name="DescripcionImagen">Imagen De un Reloj</string>
+    <string name="Tiempo">Tiempo</string>
+    <string name="BotonFinalizar">Finalizar</string>
+    <string name="textNombre">Nombre</string>
+    <string name="textApellido">Apellido</string>
+    <string name="textCorreo">Email</string>
+    <string name="TerminosYCondiciones">Terminos y condiciones</string>
+    <string name="TituloIniciarSesion">Sign Up</string>
+    <string name="BotonContinuar">Continuar</string>
+    <string name="Tiempo_Transcurrido">Tiempo Transcurrido</string>
+    <string name="PrecioHora">Precio por Hora $10</string>
+    <string name="Total">Total a Pagar:</string>
+</resources>
+
