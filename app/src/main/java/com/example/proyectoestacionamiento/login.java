@@ -26,7 +26,7 @@ public class login extends AppCompatActivity {
 
     private Button sesion,registro;
     private EditText email,pass;
-    String correo,contraseña, prueba;
+    String correo,contraseña;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
