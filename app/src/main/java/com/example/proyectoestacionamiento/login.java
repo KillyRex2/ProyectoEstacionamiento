@@ -24,9 +24,9 @@ import java.util.Map;
 
 public class login extends AppCompatActivity {
 
-    private Button sesion,registro, prueba;
+    private Button sesion,registro;
     private EditText email,pass;
-    String correo,contraseña;
+    String correo,contraseña, prueba;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
