@@ -68,15 +68,11 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:background="@drawable/round_corner_buttom"
+            android:onClick="closeSesionClick"
             android:text="Cerrar Sesión" />
 
 
     </LinearLayout>
-
-
-
-
-
 
 
 </RelativeLayout>
