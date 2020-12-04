@@ -52,6 +52,10 @@ public class Inicio extends AppCompatActivity {
             }
         });
     }
+
+    public  void closeSesionClick(View v){
+        Intent intent = new Intent(Inicio.this, login.class );
+    }
     public void scanCode(){
         IntentIntegrator integrator = new IntentIntegrator(this);
         integrator.setCaptureActivity(CaptureAct.class);

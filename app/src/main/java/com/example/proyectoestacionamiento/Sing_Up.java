@@ -57,7 +57,7 @@ public class Sing_Up extends AppCompatActivity {
                                   Datos.putString("Apellido",Apellido.getText().toString());
                                   Datos.putString("Correo",Correo.getText().toString());
                                   Datos.putString("Contraseña",Contraseña.getText().toString());
-                                  //FormadePagoActivity(Datos);
+                                  FormadePagoActivity(Datos);
                         }else {
                             Toast.makeText(Sing_Up.this,"La Contraseña no coincide ", Toast.LENGTH_LONG).show();
                         }
@@ -73,8 +73,8 @@ public class Sing_Up extends AppCompatActivity {
 
     public void ternimosClick(View v){
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Android")
-                .setMessage("Dialogo basico con boton OK")
+        builder.setTitle("Terminos y condiciones de Maniacorp: ")
+                .setMessage("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vel dolor id urna dapibus cursus in id odio. Aenean eget odio id purus tincidunt volutpat quis at quam. Fusce ullamcorper mattis elit. Pellentesque mauris risus, fermentum ac felis et, tincidunt lacinia tellus. Nullam varius lorem in rhoncus congue. Curabitur vel ante aliquam ligula sodales iaculis. Fusce fringilla dapibus sapien, vel suscipit massa auctor sed. Aliquam iaculis lobortis placerat. Etiam bibendum leo eu turpis fringilla, ac consequat lorem cursus. Ut at mauris dolor. Praesent sagittis nulla ut sapien elementum porta. Nam non auctor urna, id pharetra odio. Aenean ultricies lorem urna, vitae faucibus dolor consequat vel. Quisque iaculis mattis ex, eget convallis lorem mattis venenatis. Etiam elementum dapibus ligula, ut scelerisque orci tempus sit amet.")
                 .setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -84,11 +84,11 @@ public class Sing_Up extends AppCompatActivity {
                 .create()
                 .show();
     }
-//    public void FormadePagoActivity (Bundle Datos){
-//        Intent i = new Intent(this, Pago.class);
-//        i.putExtras(Datos);
-//        startActivity(i);
-//    }
+   public void FormadePagoActivity (Bundle Datos){
+        Intent i = new Intent(this, Pago.class);
+        i.putExtras(Datos);
+        startActivity(i);
+    }
 
     public void btnPaypalClick(View v){
         Intent intent = new Intent(this, PaypalActivity.class);

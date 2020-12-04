@@ -25,6 +25,7 @@ android {
 
 dependencies {
     implementation 'com.paypal.sdk:paypal-android-sdk:2.16.0'
+    compile 'com.imankur.library:analogclockview:1.0.0'
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'com.journeyapps:zxing-android-embedded:3.4.0'
     implementation 'androidx.appcompat:appcompat:1.1.0'
