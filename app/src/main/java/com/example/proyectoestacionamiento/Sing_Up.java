@@ -29,7 +29,6 @@ public class Sing_Up extends AppCompatActivity {
         setContentView(R.layout.activity_sing__up);
 
 
-
         Nombre=(EditText) findViewById(R.id.editTextNombre);
         Apellido=(EditText) findViewById(R.id.editTextApellido);
         Correo=(EditText) findViewById(R.id.editTextCorreo);
@@ -38,16 +37,12 @@ public class Sing_Up extends AppCompatActivity {
         TerminosYCondiciones=(CheckBox) findViewById(R.id.checkBoxTerminos);
         botonContinuar=(Button) findViewById(R.id.btContinuar);
 
-
-
         //metodo listener para el boton
         botonContinuar.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
 
-
                     if(TerminosYCondiciones.isChecked()) {
-
                         if(Nombre.getText().toString().isEmpty()) {
                             Toast.makeText(Sing_Up.this, "Por Favor Ingresé su Nombre", Toast.LENGTH_LONG).show();
                         }else if (Apellido.getText().toString().isEmpty()){

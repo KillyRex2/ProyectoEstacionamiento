@@ -3,6 +3,7 @@
     package="com.example.proyectoestacionamiento">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.hadware.camera" />
     <uses-permission android:name="android.hadware.camera.autofocus" />
@@ -16,11 +17,7 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity android:name=".SplashActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".PaymentDetails" />
         <activity android:name=".PaypalActivity" />
@@ -29,7 +26,12 @@
             android:theme="@style/AppTheme.TemaCostos" />
         <activity android:name=".Pago" />
         <activity android:name=".Tiempo" />
-        <activity android:name=".Inicio" />
+        <activity android:name=".Inicio" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".Sing_Up" />
         <activity android:name=".login">
 

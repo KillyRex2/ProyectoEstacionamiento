@@ -18,6 +18,16 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -27,6 +37,7 @@ public class login extends AppCompatActivity {
     private Button sesion,registro;
     private EditText email,pass;
     String correo,contraseña;
+    URL url;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,7 +49,6 @@ public class login extends AppCompatActivity {
             return;
         }
 
-
         sesion=(Button) findViewById(R.id.Sesion);
         registro=(Button) findViewById(R.id.btRegistro);
         email=(EditText) findViewById(R.id.editTextCorreo);
@@ -47,71 +57,17 @@ public class login extends AppCompatActivity {
         sesion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                correo = email.getText().toString();
+                contraseña = pass.getText().toString();
+                 conexion con = new conexion();
+                 String url = "192.168.1.50:3000/login";
+                 con.execute(url);
+                 String dato = con.doInBackground(url,"login",correo,contraseña);
+                 Log.i("Datos",dato);
+                 Log.i("Dato","login");
 
-                correo=email.getText().toString();
-                contraseña=pass.getText().toString();
-                //enviar datos A la BD
-                RequestQueue queue = Volley.newRequestQueue(login.this);
-                String url="http://www.parquimetro.somee.com/Inicio_Sesion.php";
-                StringRequest putRequest = new StringRequest(Request.Method.POST, url,
-                        new Response.Listener<String>()
-                        {
-                            @Override
-                            public void onResponse(String response) {
-                                // response
-                                Log.d("Response", response);
-                                if(!response.isEmpty()){
-
-                                    for (int i =0;i<response.length();i++)
-                                        if(response.charAt(i)=='<') {
-                                            response = response.substring(0, i);
-                                            break;
-                                        }
-
-                                    String[] arrOfStr = response.split(",", 3);
-                                    Log.d("Response", arrOfStr.toString());
-                                    Intent intent = new Intent(login.this, Inicio.class);
-                                    intent.putExtra("id", arrOfStr[0]);
-                                    intent.putExtra("Nombre", arrOfStr[1]);
-                                    intent.putExtra("Apellido", arrOfStr[2]);
-                                    startActivity(intent);
-                                }else{
-                                    Log.d("Response", "entro al else");
-                                    AlertDialog.Builder alerta = new AlertDialog.Builder(login.this);
-                                    alerta.setMessage("Correo o Contraseña incorrecta Verifica los Datos")
-                                            .setCancelable(false)
-                                            .setPositiveButton("Verificar", new DialogInterface.OnClickListener() {
-                                                @Override
-                                                public void onClick(DialogInterface dialog, int which) {
-                                                    dialog.dismiss();
-                                                }
-                                            }).show();
-                                }
-                            }
-                        },
-                        new Response.ErrorListener()
-                        {
-                            @Override
-                            public void onErrorResponse(VolleyError error) {
-                                // error
-                                Log.d("Error.Response", "Error al Enviar los Datos");
-                            }
-                        }
-                ) {
-                    @Override
-                    protected Map<String, String> getParams()
-                    {
-                        Map<String, String>  params = new HashMap<String, String>();
-                        params.put("Correo",correo);
-                        params.put("Password",contraseña);
-                        return params;
-                    }
-
-                };
-                queue.add(putRequest);
-                //--------------------------------------------
-
-
+                 Intent intent = new Intent(login.this, Inicio.class);
+                 startActivity(intent);
             }
         });
 
