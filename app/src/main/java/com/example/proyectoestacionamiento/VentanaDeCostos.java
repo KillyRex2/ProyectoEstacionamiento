@@ -27,24 +27,24 @@ public class VentanaDeCostos extends AppCompatActivity {
 
         getWindow().setLayout((int)(ancho*.90),(int) (alto*0.7));
 
-//        TiempoTranscurrido=(TextView)findViewById(R.id.textvTiempoTranscurrido);
-//        Tiempo=(TextView)findViewById(R.id.textvTiempo);
-//        costo=(TextView) findViewById(R.id.textvTotal);
-//        precioPorHora=(TextView) findViewById(R.id.textvPrecioHora);
-//        Bundle datos= getIntent().getExtras();
-//        String Hora=datos.getString("Horas"),
-//               Minutos=datos.getString("Minutos"),
-//               Segundos=datos.getString("Segundos"),
-//               Costos=datos.getString("Costos");
-//        TiempoTranscurrido.setText(Hora+":"+Minutos+":"+Segundos);
-//        costo.setText(costo.getText()+" $"+Costos);
-//        reinicio=(Button) findViewById(R.id.btAgain);
-//        reinicio.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(VentanaDeCostos.this, Inicio.class);
-//                startActivity(intent);
-//            }
-//        });
+        TiempoTranscurrido=(TextView)findViewById(R.id.textvTiempoTranscurrido);
+        Tiempo=(TextView)findViewById(R.id.textvTiempo);
+        costo=(TextView) findViewById(R.id.textvTotal);
+        precioPorHora=(TextView) findViewById(R.id.textvPrecioHora);
+        Bundle datos= getIntent().getExtras();
+        String Hora=datos.getString("Horas"),
+               Minutos=datos.getString("Minutos"),
+               Segundos=datos.getString("Segundos"),
+               Costos=datos.getString("Costos");
+        TiempoTranscurrido.setText(Hora+":"+Minutos+":"+Segundos);
+        costo.setText(costo.getText()+" $"+Costos);
+        reinicio=(Button) findViewById(R.id.btAgain);
+        reinicio.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(VentanaDeCostos.this, Inicio.class);
+                startActivity(intent);
+            }
+        });
     }
 }
