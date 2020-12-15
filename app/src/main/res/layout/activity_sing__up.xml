@@ -28,6 +28,26 @@
         android:orientation="vertical">
 
         <EditText
+            android:id="@+id/edtUsuario"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_gravity="right"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/rounded_corner"
+            android:ems="10"
+            android:gravity="center_vertical"
+            android:hint="@string/Usuario"
+            android:inputType="textPersonName"
+            android:padding="10dp"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF"
+            android:textSize="17sp"
+            tools:layout_editor_absoluteX="32dp"
+            tools:layout_editor_absoluteY="103dp" />
+
+        <EditText
             android:id="@+id/editTextNombre"
             android:layout_width="match_parent"
             android:layout_height="40dp"
@@ -155,7 +175,6 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="10dp"
             android:gravity="center"
-            android:onClick="ternimosClick"
             android:text="@string/TerminosYCondiciones"
             android:textColor="#FFFFFF"
             android:textSize="18sp"

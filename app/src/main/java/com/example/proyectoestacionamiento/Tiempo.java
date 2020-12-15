@@ -43,8 +43,8 @@ public class Tiempo extends AppCompatActivity {
 
         id_cliente= getIntent().getStringExtra("id");
         idParquimetro=getIntent().getStringExtra("id_parquimetro");
-        Nombre=getIntent().getStringExtra("Nombre");
-        Apellido=getIntent().getStringExtra("Apellido");
+
+
         TextViewTiempo = (TextView) findViewById(R.id.TextViewT);
         Segundos = Minutos = Horas = 0;
         estado=false;
@@ -95,13 +95,12 @@ public class Tiempo extends AppCompatActivity {
                 costoS=String.valueOf(costo);
                 final Intent intent = new Intent(Tiempo.this,VentanaDeCostos.class);
 
-
-
                 SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy", Locale.getDefault());
                 Date date = new Date();
 
                fecha = dateFormat.format(date);
-                //enviar datos A la BD
+               /*
+               //enviar datos A la BD
                 RequestQueue queue = Volley.newRequestQueue(Tiempo.this);
                 String url="http://www.parquimetro.somee.com/Transferencia.php";
                 StringRequest putRequest = new StringRequest(Request.Method.POST, url,
@@ -135,6 +134,7 @@ public class Tiempo extends AppCompatActivity {
 
                 };
                 queue.add(putRequest);
+                */
                 //--------------------------------------------
 
                 AlertDialog.Builder alerta = new AlertDialog.Builder(Tiempo.this);

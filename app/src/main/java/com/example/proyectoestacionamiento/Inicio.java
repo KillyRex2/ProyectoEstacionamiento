@@ -16,22 +16,31 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
 
 public class Inicio extends AppCompatActivity {
 
-
+    //atributos utilizados para realizar la conexion
+    JSONObject request_data;
+    JSONObject result_data;
+    RequestQueue queue;
 
     private TextView t1;
     private Button b1;
-    String resultado,id_cliente;
+    String resultado,usuario;
     String Nombre,Apellido;
 
     @Override
@@ -41,9 +50,9 @@ public class Inicio extends AppCompatActivity {
 
         t1=(TextView) findViewById(R.id.textViewNombre);
         b1=(Button) findViewById(R.id.bEscanear);
-        Nombre=getIntent().getStringExtra("Nombre");
-        Apellido=getIntent().getStringExtra("Apellido");
-        id_cliente=getIntent().getStringExtra("id");
+        Nombre=getIntent().getStringExtra("nombre");
+        usuario = getIntent().getStringExtra("usuario");
+        Apellido=getIntent().getStringExtra("apellido");
         t1.setText(Nombre+" "+Apellido);
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -56,6 +65,7 @@ public class Inicio extends AppCompatActivity {
     public  void closeSesionClick(View v){
         Intent intent = new Intent(Inicio.this, login.class );
     }
+
     public void scanCode(){
         IntentIntegrator integrator = new IntentIntegrator(this);
         integrator.setCaptureActivity(CaptureAct.class);
@@ -70,7 +80,7 @@ public class Inicio extends AppCompatActivity {
         IntentResult result = IntentIntegrator.parseActivityResult(requestCode,resultCode,data);
         if(result!=null){
             if(result.getContents()!=null){
-                resultado =result.getContents();
+                resultado = result.getContents(); //obtenemos el id del parquimetro
                 Tiempo();
             }else{
                 Toast.makeText(this,"No Results",Toast.LENGTH_LONG).show();
@@ -81,59 +91,73 @@ public class Inicio extends AppCompatActivity {
     }
 
     public void Tiempo(){
-
         //enviar datos A la BD
-        RequestQueue queue = Volley.newRequestQueue(Inicio.this);
-        String url="http://www.parquimetro.somee.com/EstadosParquimetro.php";
-        StringRequest putRequest = new StringRequest(Request.Method.POST, url,
-                new Response.Listener<String>()
-                {
-                    @Override
-                    public void onResponse(String response) {
-                        // response
-                        response=response.substring(0,7);
-                        if(response.equals("Ocupado")) {
-                            AlertDialog.Builder alerta = new AlertDialog.Builder(Inicio.this);
-                            alerta.setMessage("El Parquimetro esta Ocupado")
-                            .setCancelable(false)
-                            .setPositiveButton("Intentar Nuevamente", new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialog, int which) {
-                                    scanCode();
-                                }
-                            }).show();
-                        } else {
-                            Intent intent = new Intent(Inicio.this, Tiempo.class);
-                            intent.putExtra("id_parquimetro",resultado);
-                            intent.putExtra("id",id_cliente);
-                            intent.putExtra("Nombre", Nombre);
-                            intent.putExtra("Apellido", Apellido);
-                            startActivity(intent);
-                        }
+        String url="http://192.168.1.50:3000/qr_estado";
+
+
+        //instanciar la cola de peticiones HTTP
+        request_data = new JSONObject();
+        result_data = new JSONObject();
+        queue = Volley.newRequestQueue(this);
+
+        //crear el objeto json que vamos a mandar a la bd
+        try {
+            request_data.put("usuario", usuario);
+            request_data.put("id_parquimetro", resultado);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        //realizar la conexion con la bd
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url, request_data, new Response.Listener<JSONObject>() {
+
+            @Override
+            public void onResponse(JSONObject response) {
+
+                //pasar los datos a un jsonObject para el acceso global dentro del activity
+                try {
+                    result_data.put("estado", response.getString("estado"));
+                    result_data.put("flag", response.getString("flag"));
+                    if(response.getString("flag").equals("false")){
+                        //validar que el parquimetro este en uso
+                        AlertDialog.Builder alerta = new AlertDialog.Builder(Inicio.this);
+                        alerta.setMessage(response.getString("estado"))
+                                .setCancelable(false)
+                                .setPositiveButton("Intentar Nuevamente", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        scanCode();
+                                    }
+                                }).show();
+                    }else{
+                        Toast.makeText(Inicio.this,response.getString("estado"),Toast.LENGTH_LONG).show();
+                        llamar_Activity();
                     }
-                },
-                new Response.ErrorListener()
-                {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        // error
-                        Log.d("Error.Response", "Error al Enviar los Datos");
+                } catch (JSONException e) {
+                    try {
+                        Toast.makeText(Inicio.this,response.getString("estado"),Toast.LENGTH_LONG).show();
+                    } catch (JSONException jsonException) {
+                        jsonException.printStackTrace();
                     }
                 }
-        ) {
-            @Override
-            protected Map<String, String> getParams()
-            {
-                Map<String, String>  params = new HashMap<String, String>();
-                params.put("id_lugar",resultado);
-                return params;
             }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                // TODO: Handle error
+                Log.d("error", error.toString());
+            }
+        });
+        //agregar solicitud a la cola
+        queue.add(jsonObjectRequest);
 
-        };
-        queue.add(putRequest);
-        //--------------------------------------------
+
     }
 
+    private void llamar_Activity(){
+
+
+    }
 
 
 }

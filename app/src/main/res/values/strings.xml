@@ -12,5 +12,6 @@
     <string name="Tiempo_Transcurrido">Tiempo Transcurrido</string>
     <string name="PrecioHora">Precio por Hora $10</string>
     <string name="Total">Total a Pagar:</string>
+    <string name="Usuario">Usuario</string>
 </resources>
 
