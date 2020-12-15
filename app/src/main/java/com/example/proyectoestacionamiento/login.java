@@ -97,7 +97,7 @@ public class login extends AppCompatActivity {
     private void  realizarConexion(){
 
         //indicar la direccion para obtener datos de la bd
-        String url = "http://192.168.1.50:3000/Login";
+        String url = "http://maniacorp.ddns.net:3000/Login";
 
         //instanciar la cola de peticiones HTTP
         request_data = new JSONObject();

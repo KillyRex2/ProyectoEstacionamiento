@@ -92,7 +92,7 @@ public class Inicio extends AppCompatActivity {
 
     public void Tiempo(){
         //enviar datos A la BD
-        String url="http://192.168.1.50:3000/qr_estado";
+        String url="http://maniacorp.ddns.net:3000/qr_estado";
 
 
         //instanciar la cola de peticiones HTTP
