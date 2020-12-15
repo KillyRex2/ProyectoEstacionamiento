@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">ProyectoEstacionamiento</string>
+    <string name="app_name">Parkimaniacos</string>
     <string name="DescripcionImagen">Imagen De un Reloj</string>
     <string name="Tiempo">Tiempo</string>
     <string name="BotonFinalizar">Finalizar</string>
