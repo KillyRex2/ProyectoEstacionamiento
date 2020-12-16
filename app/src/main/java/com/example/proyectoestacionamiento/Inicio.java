@@ -155,8 +155,10 @@ public class Inicio extends AppCompatActivity {
     }
 
     private void llamar_Activity(){
-
-
+         Intent intent  = new Intent();
+         intent.putExtra("usuario",usuario);
+         intent.putExtra("parquimetro",resultado);
+         startActivity(intent);
     }
 
 
