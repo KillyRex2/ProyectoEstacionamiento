@@ -1,0 +1,2 @@
+El contenido de esta carpeta es el archivo que contiene el diseño de la aplicación.
+El diseño es la traducción del resumen de requerimientos por lo que deberá contener la relación de los requerimientos con el diseño, diagramas de flujo, estado, etc., arquitectura (patrones de diseño), paleta de colores, diseño de interfaz, etc.

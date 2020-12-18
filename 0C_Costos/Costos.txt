@@ -1,0 +1,8 @@
+El contenido de esta carpeta es todo relacionado con los costos del desarrollo de software:
+00_costos_COCOMO
+01_costos_COCOMO_Software   
+
+Sugerencia: 
+1) https://strs.grc.nasa.gov/repository/forms/cocomo-calculation/
+2) https://sceweb.uhcl.edu/dabney/SENG5230/References/COCOMO.htm
+3) http://softwarecost.org/tools/COCOMO/

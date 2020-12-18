@@ -1,0 +1,3 @@
+El contenido de esta carpeta son los archivos :
+00_Riesgos_Impacto_Probabilidad
+01_Plan_de_Contingencia

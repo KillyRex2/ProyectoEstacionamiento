@@ -1,0 +1,3 @@
+El contenido de esta carpeta es el archivo de análisis de requerimientos, las evidencias de los requisitos (entrevistas, visitas a la empresa como observador (fotografías, por ejemplo), etc.)
+y el resumen de los requerimientos para la siguiente fase Diseño.
+Procedimiento para dar seguimiento al proyecto además del seguimiento y evaluación de la calidad.

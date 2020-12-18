@@ -1,0 +1,6 @@
+El contenido de esta carpeta son las evidencias de las pruebas realizadas a los módulos de la aplicación (evaluación y seguimiento) y a la aplicación completa.
+Prueba unitaria 
+Pruebas de estrés
+Pruebas de caja negra
+Pruebas de caja blanca
+Pruebas de aceptación

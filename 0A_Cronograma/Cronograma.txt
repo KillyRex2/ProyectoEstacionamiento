@@ -1,0 +1,4 @@
+El contenido de esta carpeta son todas las versiones del cronograma:
+00_Inicial
+01_Cronograma_ver1.0
+...

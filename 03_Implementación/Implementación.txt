@@ -1,0 +1,1 @@
+El contenido de esta carpeta es todo el código fuente documentado además agregar el estándar de codificación para la escritura del mismo.
